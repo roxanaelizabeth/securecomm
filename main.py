@@ -1,11 +1,13 @@
+from core.signature import sign_message, verify_signature
 from core.encoding_utils import text_to_base64, base64_to_text
 from core.hashing import generate_sha256_hash
 from core.aes_cipher import encrypt_aes, decrypt_aes
 from core.rsa_cipher import generate_rsa_keys, encrypt_rsa, decrypt_rsa
+from core.signature import sign_message, verify_signature
 
 
 def show_menu():
-    print("\n=== SecureComm v0.2 🔐 ===")
+    print("\n=== SecureComm v0.3 🔐 ===")
     print("1. Encode text to Base64")
     print("2. Decode Base64 to text")
     print("3. Generate SHA-256 hash")
@@ -14,7 +16,9 @@ def show_menu():
     print("6. Generate RSA key pair")
     print("7. Encrypt text with RSA")
     print("8. Decrypt RSA text")
-    print("9. Exit")
+    print("9. Sign message")
+    print("10. Verify signature")
+    print("11. Exit")
 
 
 def main():
@@ -91,6 +95,29 @@ def main():
                 print("RSA decryption error.")
 
         elif option == "9":
+            if rsa_private_key is None:
+                print("Generate RSA keys first.")
+                continue
+            text = input("Enter message to sign: ")
+            try:
+                signature = sign_message(text, rsa_private_key)
+                print("Signature (Base64):", signature)
+            except Exception as e:
+                print("Signing error:", e)
+
+        elif option == "10":
+            if rsa_public_key is None:
+                print("Generate RSA keys first.")
+                continue
+            text = input("Enter original message: ")
+            signature = input("Enter Base64 signature: ")
+            try:
+                is_valid = verify_signature(text, signature, rsa_public_key)
+                print("Signature valid?:", is_valid)
+            except Exception:
+                print("Signature verification error.")
+
+        elif option == "11":
             print("Exiting SecureComm...")
             break
 

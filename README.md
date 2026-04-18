@@ -45,16 +45,20 @@ securecomm/
 │── requirements.txt
 │── README.md
 
-Implemented Features
 ## Implemented Features
 
-    UTF-8 text encoding
-    Base64 encoding and decoding
-    SHA-256 hashing
-    Hash validation
-    AES encryption and decryption
-    Interactive CLI menu
-    Initial automated tests with pytest
+- UTF-8 text encoding
+- Base64 encoding and decoding
+- SHA-256 hashing
+- Hash validation
+- AES encryption and decryption
+- RSA key generation
+- RSA encryption and decryption
+- RSA digital signatures
+- Signature verification
+- Interactive CLI menu
+- Initial automated tests with pytest
+
 Planned Features
     RSA key generation and encryption
     Digital signature verification
