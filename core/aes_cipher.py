@@ -13,19 +13,20 @@ def generate_aes_key_from_password(password):
 
 def pad_text(text):
     """
-    Apply PKCS7-style padding to text.
+    Apply PKCS7 padding.
     """
-    padding_length = AES.block_size - len(text.encode("utf-8")) % AES.block_size
-    return text + chr(padding_length) * padding_length
+    text_bytes = text.encode("utf-8")
+    padding_length = AES.block_size - len(text_bytes) % AES.block_size
+    padded = text_bytes + bytes([padding_length] * padding_length)
+    return padded
 
 
-def unpad_text(padded_text):
+def unpad_text(padded_bytes):
     """
-    Remove PKCS7-style padding.
+    Remove PKCS7 padding.
     """
-    padding_length = ord(padded_text[-1])
-    return padded_text[:-padding_length]
-
+    padding_length = padded_bytes[-1]
+    return padded_bytes[:-padding_length].decode("utf-8")
 
 def encrypt_aes(plain_text, password):
     """
@@ -35,7 +36,7 @@ def encrypt_aes(plain_text, password):
     key = generate_aes_key_from_password(password)
     cipher = AES.new(key, AES.MODE_CBC)
     padded_text = pad_text(plain_text)
-    encrypted_bytes = cipher.encrypt(padded_text.encode("utf-8"))
+    encrypted_bytes = cipher.encrypt(padded_text)
     encrypted_data = cipher.iv + encrypted_bytes
     return base64.b64encode(encrypted_data).decode("utf-8")
 
@@ -49,5 +50,5 @@ def decrypt_aes(encrypted_base64, password):
     iv = encrypted_data[:AES.block_size]
     ciphertext = encrypted_data[AES.block_size:]
     cipher = AES.new(key, AES.MODE_CBC, iv)
-    decrypted_padded = cipher.decrypt(ciphertext).decode("utf-8")
+    decrypted_padded = cipher.decrypt(ciphertext)
     return unpad_text(decrypted_padded)
