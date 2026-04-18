@@ -10,8 +10,8 @@ The goal of this project is to implement and demonstrate core cryptographic conc
 - Base64 encoding and decoding
 - SHA-256 hashing
 - Integrity verification
-- Future AES encryption
-- Future RSA key exchange
+- AES encryption
+- RSA key exchange
 - Digital signatures
 
 ## Current Status
@@ -36,34 +36,38 @@ securecomm/
 │   ├── aes_cipher.py
 │   ├── rsa_cipher.py
 │   └── signature.py
-│
 │── tests/
 │── docs/
 │── ui/
 │── screenshots/
 │── main.py
 │── requirements.txt
+│── run_gui.py
 │── README.md
 
 ## Implemented Features
 
-- UTF-8 text encoding
-- Base64 encoding and decoding
-- SHA-256 hashing
-- Hash validation
-- AES encryption and decryption
-- RSA key generation
-- RSA encryption and decryption
-- RSA digital signatures
-- Signature verification
-- Interactive CLI menu
-- Initial automated tests with pytest
-- Hybrid encryption workflow (AES + RSA + digital signature)
-- Tkinter graphical user interface
+UTF-8 text encoding
+Base64 encoding and decoding
+SHA-256 hashing
+Hash validation
+AES encryption and decryption
+RSA key generation
+RSA encryption and decryption
+RSA digital signatures
+Signature verification
+Hybrid encryption workflow (AES + RSA + digital signature)
+Interactive CLI menu
+Tkinter graphical user interface
+Automated tests with pytest
 
-## Run the GUI version
+Run the CLI version
+python main.py
+
+Run the GUI version
 python run_gui.py
-## GUI Preview
+
+
 
 ![SecureComm GUI](screenshots/gui.png)
 
@@ -73,5 +77,4 @@ Planned Features
     Secure message workflow
     Graphical user interface
 Team
-    Roxana Garat Torres — Project Lead / Security Design / Documentation
-    Team Member — Pending incorporation 
+    Roxana — Project Lead / Security Design / Documentation
