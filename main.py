@@ -4,10 +4,10 @@ from core.hashing import generate_sha256_hash
 from core.aes_cipher import encrypt_aes, decrypt_aes
 from core.rsa_cipher import generate_rsa_keys, encrypt_rsa, decrypt_rsa
 from core.signature import sign_message, verify_signature
-
+from core.hybrid_cipher import hybrid_encrypt_and_sign, hybrid_decrypt_and_verify
 
 def show_menu():
-    print("\n=== SecureComm v0.3 🔐 ===")
+    print("\n=== SecureComm v0.4 🔐 ===")
     print("1. Encode text to Base64")
     print("2. Decode Base64 to text")
     print("3. Generate SHA-256 hash")
@@ -18,8 +18,9 @@ def show_menu():
     print("8. Decrypt RSA text")
     print("9. Sign message")
     print("10. Verify signature")
-    print("11. Exit")
-
+    print("11. Hybrid encrypt + sign")
+    print("12. Hybrid decrypt + verify")
+    print("13. Exit")
 
 def main():
     rsa_public_key = None
@@ -116,8 +117,42 @@ def main():
                 print("Signature valid?:", is_valid)
             except Exception:
                 print("Signature verification error.")
-
         elif option == "11":
+            if rsa_public_key is None or rsa_private_key is None:
+                print("Generate RSA keys first.")
+                continue
+
+            message = input("Enter message to hybrid encrypt: ")
+            try:
+                result = hybrid_encrypt_and_sign(message, rsa_public_key, rsa_private_key)
+                print("\nEncrypted message:\n", result["encrypted_message"])
+                print("\nEncrypted AES password:\n", result["encrypted_aes_password"])
+                print("\nSignature:\n", result["signature"])
+            except Exception as e:
+                print("Hybrid encryption error:", e)
+
+        elif option == "12":
+            if rsa_public_key is None or rsa_private_key is None:
+                print("Generate RSA keys first.")
+                continue
+
+            encrypted_message = input("Enter encrypted message: ")
+            encrypted_aes_password = input("Enter encrypted AES password: ")
+            signature = input("Enter signature: ")
+
+            try:
+                result = hybrid_decrypt_and_verify(
+                    encrypted_message,
+                    encrypted_aes_password,
+                    signature,
+                    rsa_public_key,
+                    rsa_private_key
+                )
+                print("\nDecrypted message:", result["decrypted_message"])
+                print("Signature valid?:", result["signature_valid"])
+            except Exception as e:
+                print("Hybrid decryption error:", e)
+        elif option == "13":
             print("Exiting SecureComm...")
             break
 
