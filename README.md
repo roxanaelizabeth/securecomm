@@ -58,6 +58,7 @@ securecomm/
 - Signature verification
 - Interactive CLI menu
 - Initial automated tests with pytest
+- Hybrid encryption workflow (AES + RSA + digital signature)
 
 Planned Features
     RSA key generation and encryption
