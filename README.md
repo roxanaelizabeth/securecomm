@@ -1,65 +1,62 @@
 # SecureComm 🔐
 
-SecureComm is a collaborative cybersecurity project focused on developing a secure communication platform using modern cryptographic techniques.
+SecureComm is a collaborative cryptography project focused on building a secure communication platform in Python.
 
-## 📌 Objective
+## Objective
 
-Build a secure messaging system that demonstrates real-world cryptography concepts such as:
+The goal of this project is to implement and demonstrate core cryptographic concepts through a secure messaging system, including:
 
-- Symmetric encryption
-- Asymmetric encryption
-- Hashing
-- Digital signatures
-- Secure encoding
+- UTF-8 encoding
+- Base64 encoding and decoding
+- SHA-256 hashing
 - Integrity verification
+- Future AES encryption
+- Future RSA key exchange
+- Digital signatures
 
-## 🚀 Current Status
+## Current Status
 
 Project in active development.
 
-## 🛠 Technologies
+## Technologies
 
 - Python 3
 - Git
 - GitHub
 - VS Code
+- Pytest
 
-## 📂 Project Structure
+## Project Structure
 
-``` id="r1am3w"
+```text
 securecomm/
 │── core/
-│── ui/
-│── docs/
+│   ├── encoding_utils.py
+│   ├── hashing.py
+│   ├── aes_cipher.py
+│   ├── rsa_cipher.py
+│   └── signature.py
+│
 │── tests/
+│── docs/
+│── ui/
 │── screenshots/
 │── main.py
+│── requirements.txt
 │── README.md
 
+Implemented Features
+    UTF-8 text encoding
+    Base64 encoding and decoding
+    SHA-256 hashing
+    Hash validation
+    Initial automated tests with pytest
 Planned Features
-AES message encryption
-RSA key generation
-SHA-256 hashing
-Digital signatures
-Secure message exchange
-Message history
-User interface
-👥 Team
-Roxana Garat Torres – Project Lead / Security Design / Documentation
-
-📈 Roadmap
-Phase 1
-Project structure
-Encoding utilities
-Hashing module
-Phase 2
-AES encryption
-RSA encryption
-CLI workflow
-Phase 3
-Signatures
-UI improvements
-Final documentation
-📄 License
-
-MIT License (to be added)
+    AES encryption module
+    RSA key generation and encryption
+    Digital signature verification
+    Secure message workflow
+    Graphical user interface
+Team
+    Roxana Garat Torres — Project Lead / Security Design / Documentation
+    Team Member — Pending incorporation 
