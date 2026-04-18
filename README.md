@@ -59,6 +59,7 @@ securecomm/
 - Interactive CLI menu
 - Initial automated tests with pytest
 - Hybrid encryption workflow (AES + RSA + digital signature)
+- Tkinter graphical user interface
 
 Planned Features
     RSA key generation and encryption
