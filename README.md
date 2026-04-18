@@ -61,6 +61,9 @@ securecomm/
 - Hybrid encryption workflow (AES + RSA + digital signature)
 - Tkinter graphical user interface
 
+## Run the GUI version
+python run_gui.py
+
 Planned Features
     RSA key generation and encryption
     Digital signature verification
