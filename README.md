@@ -45,7 +45,7 @@ securecomm/
 │── run_gui.py
 │── README.md
 
-## Implemented Features
+Implemented Features
 
 UTF-8 text encoding
 Base64 encoding and decoding
@@ -61,20 +61,10 @@ Interactive CLI menu
 Tkinter graphical user interface
 Automated tests with pytest
 
-Run the CLI version
-python main.py
-
 Run the GUI version
 python run_gui.py
 
 
 
-![SecureComm GUI](screenshots/gui.png)
-
-Planned Features
-    RSA key generation and encryption
-    Digital signature verification
-    Secure message workflow
-    Graphical user interface
 Team
     Roxana — Project Lead / Security Design / Documentation
