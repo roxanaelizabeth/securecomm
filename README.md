@@ -63,6 +63,9 @@ securecomm/
 
 ## Run the GUI version
 python run_gui.py
+## GUI Preview
+
+![SecureComm GUI](screenshots/gui.png)
 
 Planned Features
     RSA key generation and encryption
